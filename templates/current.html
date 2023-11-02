@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+	
+	{% for item in client_issues %}
+	<center>
+	<div class="flip-card">
+		<div class="flip-card-inner">
+			<div class="flip-card-front"
+				<p>
+					<p><h3>{{ item.fields.summary }}</h3></p>
+					<p>Status: {{ item.fields.status.name}}</p>
+					<p>Estimate: {{ item.fields.customfield_10106}}</p>
+					<p>Assignee: {{ item.fields.assignee.name}}</p>
+				</p>
+			</div>
+			<div class="flip-card-back">
+				<ul>
+  					<p><a href>{{ item.self }}</a></p>
+  					<p>{{ item.fields.description}}</p>
+  					<p>Labels: {{ item.fields.labels}}</p>
+  					
+  				</ul>
+  			</div>
+  		</div>
+  	</div>
+  </center>
+  	{% endfor %}
+
+</body>
+{% endblock %}

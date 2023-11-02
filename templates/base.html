@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Scout Dashboard</title>
+    <meta charset="UTF-8">
+    <link href="./static/css/main.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="./static/images/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  </head>
+<div class="topnav">
+  <a href="{{ url_for('landing_page') }}">Home</a>
+  <a href="{{ url_for('current') }}">Current</a>
+  <a href="{{ url_for('help') }}">Help</a>
+</div> 
+  <body>
+
+      {% block content %}{% endblock %}
+        
+  </body>
+</html>
