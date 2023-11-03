@@ -1,3 +1,5 @@
+#This is currently unused but leaving here in case I clean this up
+#Needs key saved elsewhere and included in headers for requests
 #Needed for the API
 import requests
 import json

@@ -1,6 +1,6 @@
 #Flask commands -- 
 #This tells flask where the app is: export FLASK_APP=app
-#This tells flask to run it: flask run
+#This tells flask to run it: flask run --debug
 
 from flask import Flask, render_template, request, redirect, url_for
 import requests
@@ -46,6 +46,13 @@ def current():
     active_scout_issues = response.json()
     list_of_issues = active_scout_issues["issues"]
 
+    ##Sprint Totals
+    points = []
+    for item in active_scout_issues["issues"]:
+        points.append(item["fields"]["customfield_10106"])
+
+    total_points = sum(points)
+
     #Filters for Columns
     maintenance_issues = filter(lambda x: "Maintenance" in x["fields"]["labels"], active_scout_issues["issues"])
     mr_index_issues = filter(lambda x: "MrIndex" in x["fields"]["labels"], active_scout_issues["issues"])
@@ -57,4 +64,5 @@ def current():
         maintenance_issues = maintenance_issues,
         mr_index_issues = mr_index_issues,
         client_issues = client_issues,
-        project_issues = project_issues)
+        project_issues = project_issues,
+        total_points = total_points)
