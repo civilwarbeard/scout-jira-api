@@ -2,6 +2,27 @@
 
 {% block content %}
 <body>
-	<div class="img"> <img src="./static/images/dashboard.jpg"></div>
+	<h3> {{ sprint_id }} </h3>
+	<div class="col">
+        <h2>All Issues</h2>
+         	<p>All issues in Current Scout Sprint.</p>
+            {% for item in current_sprint_issues.issues %}
+            <div class="flip-card">
+               <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                     <h3>{{ item.fields.summary }}</h3>
+                     <p>Status: {{ item.fields.status.name }}</p>
+                     <p>Estimate: {{ item.fields.customfield_10106 }}</p>
+                     <p>Assignee: {{ item.fields.assignee.name }}</p>
+                  </div>
+                  <div class="flip-card-back">
+                     <p><a href>https://jira.wellspring.com/browse/{{ item.key }}</a></p>
+                     <p>{{ item.fields.description }}</p>
+                     <p>Labels: {{ item.fields.labels }}</p>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
 </body>
 {% endblock %}
