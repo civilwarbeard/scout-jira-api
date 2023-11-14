@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route("/")
 def landing_page():
     headers = {
-  'Authorization': BEARER_TOKEN
+  'Authorization': os.getenv("BEARER_TOKEN")
   }
 
     #URLS
@@ -43,7 +43,7 @@ def help():
 @app.route("/current", methods=["GET"])
 def current():
     headers = {
-  'Authorization': 'Bearer OTQ1MjQ3ODMwNjMxOvSONf0GauaTrb/N3FZo1KB5rM7u'
+  'Authorization': os.getenv("BEARER_TOKEN")
   }
 
     #URLS
